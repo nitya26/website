@@ -16,7 +16,40 @@
             background-color: #ffc107;
             color: black; 
         }
+        .flip-card {
+  background-color: #ffffff;
+  width: 320px;
+  height: 120px;
+  perspective: 1000px;
+}
 
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
         .section-header {
             padding: 100px 50px;
             text-align: center;
@@ -41,8 +74,8 @@
             text-align: center;
             text-decoration: none; 
             display: inline-block;
-            font-size: 16px;
-            margin-top: 20px;
+            font-size: 14px;
+            margin-top: 18px;
             cursor: pointer;
         }
 
@@ -67,23 +100,454 @@
             height: auto;
             max-height: 400px; 
         }
+        .pentesting {
+  background-color: #ffffff;
+  color: #444;
+  cursor: pointer;
+  padding: 16px;
+  width: 50%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+
+.active, .pentesting:hover {
+  background-color: #ffc107; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+
+..............................
+
+<title>Penetration Testing Services Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Button Styling */
+        .open-form-btn {
+            background-color: #2c2c54;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 20px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .open-form-btn:hover {
+            background-color: #1d1d3b;
+        }
+
+        /* Popup Form Styling */
+        .popup-form {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #2c2c54;
+            margin-bottom: 20px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333333;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .form-group label span {
+            color: red;
+        }
+
+        .form-group .recaptcha {
+            margin-top: 15px;
+        }
+
+        .form-group .recaptcha iframe {
+            width: 100%;
+        }
+
+        .form-group .submit-btn {
+            background-color: #2c2c54;
+            color: #ffffff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .form-group .submit-btn:hover {
+            background-color: #1d1d3b;
+        }
+
+        /* Flexbox for form fields in pairs */
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+    </style>
+
+......................................
     </style>
 
     <div class="section-header">
-        <h1>Pen Testing Services</h1>
-        <ul>
-            <li>Penetration testing, often referred to as pen testing or ethical hacking, 
-                is a proactive approach to assessing the security of computer systems, networks, and applications. 
-                It involves simulating real-world cyber attacks to identify vulnerabilities that malicious actors could exploit. 
-                Penetration testers utilize a variety of techniques, tools, and methodologies to mimic the tactics of hackers, aiming 
-                to uncover weaknesses in an organization's defenses before they can be exploited by adversaries.</li>
-            <li> Similarly, Our dedicated team engages in collaborative dialogues with partner organizations, creating custom testing 
-                environments to reveal vulnerabilities in essential applications. We conduct thorough analyses, delivering detailed reports 
-                that not only identify vulnerabilities but also offer strategic remediation steps.</li>
-        </ul>
-        <div class="image-container">
-            <img class="img-fluid" src="{% static 'assets/img/pages/appattack/pen-test.svg' %}" alt="A burglar running off with sensitive information with phone in background">
+        <h1>Penetration Testing Services</h1>
+        <p class="mb-4 lead fw-bold text-center">Understanding your security posture is crucial for safeguarding your organization. Our Penetration Testing services employ authorized hacking techniques to identify vulnerabilities within your systems. Our expert team conducts thorough assessments, providing you with detailed, prioritized reports on potential threats. With these insights, you can effectively fortify your applications, networks, and physical environments against cyber-attacks. Secure your organization today by addressing vulnerabilities before they can be exploited by malicious actors.     <!-- Vision and Mission -->
+  <section class="section section-lg">
+    <div class="container">
+      <div class="row justify-content-between align-items-center mb-5 mb-lg-2">
+        <div class="col-lg-5 mb-5 mb-lg-0">
+          <h2 class="h1 text-center">Benefits of Penetration Testing</h2>
+          <p class="mb-4 lead fw-bold text-center">Enhance your cyber resilience, minimize risk exposure, and ensure alignment with top cybersecurity standards. </p>
+          <p class="mb-4 lead fw-bold text-cente">Protect your network and applications by identifying and addressing vulnerabilities with our expert Penetration Testing services. Ensure your systems are safeguarded against cyber-attacks with thorough security assessments. </p>
+        </p>
+
         </div>
+            <div class="col-lg-6">
+                <img src="{% static 'assets/img/pages/appattack/pen-test.svg' %}" alt="A burglar running off with sensitive information with phone in background">
+            </div>
+            <figure class="position-absolute bottom-0 left-0 w-100 d-none d-md-block mb-n2"><svg class="fill-tertiary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 185.4">
+                <path d="M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z"></path>
+              </svg></figure>
+            
+            <div class="content-block content-block--cards spacer-section-pb">
+              <div class='stretch color-background-accent'></div>    <div class="content-block__content"><div class="container">
+                      <div class="cards g-3 row justify-content-center row-cols-sm-2 row-cols-md-3">
+                                      <div class="col-12" data-animate>
+                                        <div class='card card--surface'>
+                                
+          <div class="card__content vstack">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <h3 class='card__title h6'>Identify Vulnerabilities</h3>
+                    <img src="{% static 'assets/img/pages/appattack/identify.png' %}" alt="Identify vulnerabilities" style="width:180px;height:0px;">
+                  </div>
+                  <div class="flip-card-back">
+              <div class='vstack color-text-muted'><p>Uncover weaknesses in your systems before attackers exploit them, allowing you to address potential security gaps.</p>
+          </div>    </div>
+        </div>
+    </div>
+  </div>
+          </div>				</div>
+                                      <div class="col-12" data-animate>
+                              <div class='card card--surface'>
+          <div class="card__content vstack">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <h3 class='card__title h6'>Mitigate Risks</h3>    
+                    <img src="{% static 'assets/img/pages/appattack/mitigate-risk.png' %}" alt="Mitigate Risk" style="width:150px;height:80px;">
+                  </div>
+                  <div class="flip-card-back">
+               <div class='vstack color-text-muted'><p>Reduce your organization's exposure to cyber threats by proactively addressing vulnerabilities found during testing.</p>
+          </div>    </div>
+        </div>
+    </div>
+  </div>
+          </div>				</div>
+                      <div class="col-12" data-animate>
+                              <div class='card card--surface'>
+          <div class="card__content vstack">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <h3 class='card__title h6'>Compliance Assurance</h3>   
+                    <img src="{% static 'assets/img/pages/appattack/compliance-assurance.png' %}" alt="Compliance Assurance" style="width:150px;height:80px;">
+                  </div>
+                  <div class="flip-card-back">
+               <div class='vstack color-text-muted'><p>Ensure alignment with industry cybersecurity standards and regulatory requirements, enhancing your overall security posture.</p>
+          </div>    </div>
+        </div>
+    </div>
+  </div>
+          </div>				</div>
+                                      <div class="col-12" data-animate>
+                              <div class='card card--surface'>
+          <div class="card__content vstack">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <h3 class='card__title h6'>Incident Response</h3>   
+                    <img src="{% static 'assets/img/pages/appattack/Incident-Response.png' %}" alt="Incident Response" style="width:150px;height:80px;">
+                  </div>
+                  <div class="flip-card-back">
+            <div class='vstack color-text-muted'><p>Improve your organization's ability to respond to real-world attacks by understanding how your systems might be compromised.</p>
+          </div>    </div>
+        </div>
+    </div>
+  </div>
+          </div>				</div>
+                                      <div class="col-12" data-animate>
+                              <div class='card card--surface'>
+          <div class="card__content vstack">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <h3 class='card__title h6'>Strengthen Customer Trust</h3>  
+                    <img src="{% static 'assets/img/pages/appattack/Customertrust.png' %}" alt="Strengthen Customer Trust" style="width:150px;height:80px;">
+                  </div>
+                  <div class="flip-card-back">
+                 <div class='vstack color-text-muted'><p>Demonstrating a commitment to security can boost customer confidence in your ability to protect their data and services.</p>
+          </div>    </div>
+        </div>
+    </div>
+  </div>
+          </div>				</div>                                   
+                              </div>
+                  </div>
+          </div>
+          
+          </div>
+            </div>
+      </div>
+
+      ................................
+     
+
+<button class="open-form-btn">Talk to a Penetration Testing Expert</button>
+
+
+<div class="popup-form" id="popupForm">
+    <div class="form-container">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <h2>Penetration Testing Services</h2>
+        <form action="/submit_form_endpoint" method="post">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fname">First name <span>*</span></label>
+                    <input type="text" id="fname" name="fname" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="lname">Last name <span>*</span></label>
+                    <input type="text" id="lname" name="lname" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email <span>*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone <span>*</span></label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="company">Company <span>*</span></label>
+                    <input type="text" id="company" name="company" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="jobtitle">Job title <span>*</span></label>
+                    <input type="text" id="jobtitle" name="jobtitle" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="region">Region <span>*</span></label>
+                <select id="region" name="region" required>
+                    <option value="" disabled selected>Choose an option</option>
+                    <option value="NSW">New South Wales</option>
+                    <option value="VIC">Victoria</option>
+                    <option value="QLD">Queensland</option>
+                    <option value="SA">South Australia</option>
+                    <option value="WA">Western Australia</option>
+                    <option value="TAS">Tasmania</option>
+                    <option value="ACT">Australian Capital Territory</option>
+                    <option value="NT">Northern Territory</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message <span>*</span></label>
+                <textarea id="message" name="message" required></textarea>
+                <small>Please provide a brief description of the service you require</small>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="marketing-consent">
+                    I agree to receive marketing communications from Hardhat-Enterprises
+                </label>
+            </div>
+
+            <div class="form-group recaptcha">
+                
+                <div class="g-recaptcha" data-sitekey="your-site-key"></div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+    // Get elements
+    var openFormBtn = document.querySelector('.open-form-btn');
+    var popupForm = document.getElementById('popupForm');
+    var closeBtn = document.getElementById('closeBtn');
+
+    // Open form when button is clicked
+    openFormBtn.addEventListener('click', function() {
+        popupForm.style.display = 'flex';
+    });
+
+    // Close form when the close button is clicked
+    closeBtn.addEventListener('click', function() {
+        popupForm.style.display = 'none';
+    });
+
+    // Close form when clicking outside of the form container
+    window.addEventListener('click', function(event) {
+        if (event.target == popupForm) {
+            popupForm.style.display = 'none';
+        }
+    });
+</script>
+      ..............................
+       <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+   
+
+       <body>
+
+        <h2>Penetration Testing FAQs</h2>
+        
+        <button class="pentesting">What is penetration testing (pen-testing)?</button>
+        <div class="panel">
+          <p>Penetration testing is a simulated cyberattack on a computer system, network, or web application to identify security vulnerabilities that could be exploited by malicious hackers.</p>
+        </div>
+        
+        <button class="pentesting">Why is penetration testing important?</button>
+        <div class="panel">
+          <p>Penetration testing helps organizations proactively identify and mitigate security weaknesses before attackers can exploit them. It allows for better security posture and helps in compliance with industry regulations.</p>
+        </div>
+        
+        <button class="pentesting">Who performs penetration testing?</button>
+        <div class="panel">
+          <p>Penetration tests are typically conducted by cybersecurity professionals with expertise in ethical hacking and penetration testing tools. They may be internal security teams or external consultants hired for the purpose.</p>
+        </div>
+        
+        <button class="pentesting">How often should penetration testing be conducted?</button>
+        <div class="panel">
+          <p>The frequency depends on the organization's risk profile and industry regulations. It's typically recommended annually or after significant changes to the IT infrastructure.</p>
+        </div>
+        
+        <button class="pentesting">What are some common penetration testing tools?</button>
+        <div class="panel">
+          <p>Popular tools include Metasploit, Nmap, Burp Suite, OWASP ZAP, Nessus, and many more specialized tools depending on the type of testing.</p>
+        </div>
+        
+        <script>
+        var acc = document.getElementsByClassName("pentesting");
+        var i;
+        
+        for (i = 0; i < acc.length; i++) {
+          acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+              panel.style.display = "none";
+            } else {
+              panel.style.display = "block";
+            }
+          });
+        }
+        </script>
+        
+        </body>
+
+</section>
+
+        <div>
         <button type="button" class="btn btn-primary btn-lg px-4 gap-3" id="secureCodeReview">Secure Code Review</button>
         <button type="button" class="btn btn-primary btn-lg px-4 gap-3" id="comprehensiveReports">Comprehensive Reports</button>
         <button type="button" class="btn" id="backButton">Back</button>
@@ -99,6 +563,6 @@
                 window.location.href = "{% url 'comphrehensive_report' %}";
             });
         </script>
-    </div>
+        </div>
 </main>
 {% endblock content %}
